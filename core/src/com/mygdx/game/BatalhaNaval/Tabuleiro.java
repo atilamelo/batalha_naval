@@ -117,14 +117,15 @@ public class Tabuleiro {
                     int xNavio = orientacaoHorizontal ? x + i : x;
                     int yNavio = orientacaoHorizontal ? y : y + i;
 
-                    // Obter a célula atual
-                    Cell cell = tabuleiro[xNavio][yNavio];
-    
+                    
                     // Verificar se as células estão dentro dos limites do tabuleiro
                     if (xNavio >= larguraTabuleiro || yNavio >= alturaTabuleiro) {
                         celulasDisponiveis = false;
                         break;
                     }
+
+                    // Obter a célula atual
+                    Cell cell = tabuleiro[xNavio][yNavio];
     
                     // Verificar se a célula já está ocupada por outro navio
                     if (cell.estaOcupado()) {
