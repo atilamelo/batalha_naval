@@ -173,7 +173,7 @@ public class Tabuleiro {
         int cont = 0;
         
         // Imprime a legenda na horizontal
-        System.out.print("     ");
+        System.out.print("    ");
         for (char letra = 'A'; letra <= 'J'; letra++) {
 
             System.out.print(letra + "   ");
