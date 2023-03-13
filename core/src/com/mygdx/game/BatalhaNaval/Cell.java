@@ -1,6 +1,5 @@
 package com.mygdx.game.BatalhaNaval;
 
-import java.util.List;
 
 /**
  * Classe que representa uma célula no tabuleiro de jogo do tipo batalha naval.
@@ -19,6 +18,7 @@ public class Cell {
     public Cell(int x, int y) {
         this.x = x;
         this.y = y;
+        this.isHit = false;
     }
 
     /**
@@ -31,12 +31,23 @@ public class Cell {
     }
 
     /**
-     * Retorna se a célula está ocupada por um navio.
+     * Retorna o estado que a célula está.
      * 
-     * @return true se a célula possui um navio, false caso contrário
+     * @return "AGUA" - Caso não esteja ocupada por nenhum navio e não foi atingida 
+     *         "NAVIO" - Caso esteja ocupado por algum navio que não foi atingido ainda
+     *         "HIT" - Caso a célula esteja ocupado por algum navio que foi atingido
+     *         "MISS" - Caso a célula não esteja ocupada e foi atingida
      */
-    public boolean estaOcupado(){
-        return ship != null;
+    public String getState() {
+        if(ship == null && !isHit){
+            return "AGUA";
+        }else if(ship != null && !isHit){
+            return "NAVIO";
+        }else if(ship != null && isHit){
+            return "HIT";
+        }else{
+            return "MISS";
+        }
     }
 
     /**
@@ -73,6 +84,15 @@ public class Cell {
      */
     public void setHit(boolean hit) {
         isHit = hit;
+    }
+
+    /**
+     * Retorna se a célula está ocupada por um navio.
+     * 
+     * @return true se a célula possui um navio, false caso contrário
+     */
+    public boolean isOcupado(){
+        return ship != null;
     }
 
     /**

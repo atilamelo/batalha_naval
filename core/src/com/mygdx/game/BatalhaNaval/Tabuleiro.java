@@ -11,8 +11,8 @@ import java.util.Set;
  * Representa o tabuleiro do jogo batalha naval.
  */
 public class Tabuleiro {
-    private int larguraTabuleiro;
-    private int alturaTabuleiro;
+    private final int largura;
+    private final int altura;
     Cell[][] tabuleiro;
 
     /**
@@ -26,8 +26,8 @@ public class Tabuleiro {
      * @param navios           a lista de navios que serão posicionados no tabuleiro
      */
     public Tabuleiro(int larguraTabuleiro, int alturaTabuleiro, List<Ship> navios) {
-        this.larguraTabuleiro = larguraTabuleiro;
-        this.alturaTabuleiro = alturaTabuleiro;
+        this.largura = larguraTabuleiro;
+        this.altura = alturaTabuleiro;
         tabuleiro = new Cell[larguraTabuleiro][alturaTabuleiro];
 
         // Preenche o tabuleiro com as células
@@ -52,6 +52,14 @@ public class Tabuleiro {
         return tabuleiro[x][y];
     }
 
+    public int getLargura() {
+        return largura;
+    }
+
+    public int getAltura() {
+        return altura;
+    }
+
     /**
      * 
      * Retorna uma lista com todas as células vizinhas à célula passada como
@@ -71,7 +79,7 @@ public class Tabuleiro {
         // Percorre todas as células vizinhas a x, y
         for (i = x - 1; i <= x + 1; i++) {
             for (j = y - 1; j <= y + 1; j++) {
-                if (i >= 0 && i < larguraTabuleiro && j >= 0 && j < alturaTabuleiro && (i != x || j != y)) {
+                if (i >= 0 && i < largura && j >= 0 && j < altura && (i != x || j != y)) {
                     // A célula (i,j) está dentro do tabuleiro e é diferente da célula em questão
                     // (x, y)
                     vizinhas.add(tabuleiro[i][j]);
@@ -96,8 +104,8 @@ public class Tabuleiro {
     
             while (!navioPosicionado) {
                 // Gerar coordenadas aleatórias
-                int x = random.nextInt(larguraTabuleiro);
-                int y = random.nextInt(alturaTabuleiro);
+                int x = random.nextInt(largura);
+                int y = random.nextInt(altura);
     
                 // Gerar uma orientação aleatória
                 boolean orientacaoHorizontal = random.nextBoolean();
@@ -119,7 +127,7 @@ public class Tabuleiro {
 
                     
                     // Verificar se as células estão dentro dos limites do tabuleiro
-                    if (xNavio >= larguraTabuleiro || yNavio >= alturaTabuleiro) {
+                    if (xNavio >= largura || yNavio >= altura) {
                         celulasDisponiveis = false;
                         break;
                     }
@@ -128,7 +136,7 @@ public class Tabuleiro {
                     Cell cell = tabuleiro[xNavio][yNavio];
     
                     // Verificar se a célula já está ocupada por outro navio
-                    if (cell.estaOcupado()) {
+                    if (cell.isOcupado()) {
                         celulasDisponiveis = false;
                         break;
                     }
@@ -144,7 +152,7 @@ public class Tabuleiro {
         
                     // Verificar se algum dos vizinhos já está ocupado por outro navio
                     for (Cell vizinho : vizinhos) {
-                        if (vizinho.estaOcupado()) {
+                        if (vizinho.isOcupado()) {
                             celulasDisponiveis = false;
                             break;
                         }
@@ -181,9 +189,9 @@ public class Tabuleiro {
         System.out.println();
 
         // Imprime o tabuleiro
-        for (int x = 0; x < alturaTabuleiro; x++) {
+        for (int x = 0; x < altura; x++) {
             System.out.print(cont + " | "); // Legenda na vertical
-            for (int y = 0; y < larguraTabuleiro; y++) {
+            for (int y = 0; y < largura; y++) {
                 System.out.print(tabuleiro[x][y] + " | ");
             }
             System.out.println();
