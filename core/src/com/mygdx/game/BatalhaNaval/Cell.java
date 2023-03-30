@@ -34,19 +34,16 @@ public class Cell {
      * Retorna o estado que a célula está.
      * 
      * @return "AGUA" - Caso não esteja ocupada por nenhum navio e não foi atingida 
-     *         "NAVIO" - Caso esteja ocupado por algum navio que não foi atingido ainda
      *         "HIT" - Caso a célula esteja ocupado por algum navio que foi atingido
      *         "MISS" - Caso a célula não esteja ocupada e foi atingida
      */
     public String getState() {
-        if(ship == null && !isHit){
-            return "AGUA";
-        }else if(ship != null && !isHit){
-            return "NAVIO";
-        }else if(ship != null && isHit){
+        if(ship != null && isHit){
             return "HIT";
-        }else{
+        }else if(ship == null && isHit){
             return "MISS";
+        }else{
+            return "WATER";
         }
     }
 

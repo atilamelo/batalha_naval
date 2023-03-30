@@ -1,5 +1,4 @@
-package com.mygdx.game;
-
+package com.mygdx.game.TesteAnotacoes.Anotacoes;
 import java.util.ArrayList;
 import java.util.List;
 

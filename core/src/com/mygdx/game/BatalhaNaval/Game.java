@@ -7,7 +7,7 @@ public class Game {
     private List<Ship> navios; 
 
     public Game(int alturaTabuleiro, int larguraTabuleiro, List<Ship> navios) {
-        this.tabuleiro = new Tabuleiro(larguraTabuleiro, alturaTabuleiro, null);
+        this.tabuleiro = new Tabuleiro(larguraTabuleiro, alturaTabuleiro, navios);
         this.navios = navios;
     }
 

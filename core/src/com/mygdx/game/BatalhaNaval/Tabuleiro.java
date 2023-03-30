@@ -126,7 +126,7 @@ public class Tabuleiro {
                     int yNavio = orientacaoHorizontal ? y : y + i;
 
                     
-                    // Verificar se as células estão dentro dos limites do tabuleiro
+                    // Verificar se as células estão nos limites do tabuleiro
                     if (xNavio >= largura || yNavio >= altura) {
                         celulasDisponiveis = false;
                         break;
@@ -159,7 +159,7 @@ public class Tabuleiro {
                     }
                 }
     
-                // Se durante a execução todos as condições foram atendidas, posicionar o navio
+                // Se durante a execução todas as condições foram atentas, posicionar o navio
                 if (celulasDisponiveis) {
                     for (Cell cell : celulasDoNavio) {
                         cell.setShip(navio);
