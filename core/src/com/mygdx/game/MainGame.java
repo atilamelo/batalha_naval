@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -22,12 +23,14 @@ public class MainGame extends ApplicationAdapter{
 
 	@Override
 	public void create () {
-		// Loads assets for board - NEEDS TO DO ASSYNCRONOUSLY LATER
+		// Loads assets for the game
 		assetManager = new AssetManager();
 		assetManager.load("water.png", Texture.class);
 		assetManager.load("ship.png", Texture.class);
 		assetManager.load("miss.png", Texture.class);
-		assetManager.load("hit.png", Texture.class);	
+		assetManager.load("hit.png", Texture.class);
+		assetManager.load("sound_miss.wav", Sound.class);
+		assetManager.load("sound_hit.wav", Sound.class);
 		assetManager.finishLoading();
 
 		// Create game logic 
@@ -49,13 +52,12 @@ public class MainGame extends ApplicationAdapter{
 		stage = new Stage(new FitViewport(1200, 800));
 
 		table = new Table();
-		table.defaults().size(64).pad(10); // set the default size and padding of each cell
-		table.pad(10);
+		table.defaults().size(64).pad(5); // set the default size and padding of each cell
 
 		for (int row = 0; row < 10; row++) {
 			for (int col = 0; col < 10; col++) {
 				com.mygdx.game.BatalhaNaval.Cell cell = tabuleiro.getCell(row, col);
-				TesteCell cellTest = new TesteCell(assetManager, cell);
+				BoardCellActor cellTest = new BoardCellActor(assetManager, cell);
 				table.add(cellTest); 
 			}
 			table.row();
@@ -85,5 +87,9 @@ public class MainGame extends ApplicationAdapter{
 		stage.dispose();
 		assetManager.dispose();
 	}
-
+	
+	@Override
+	public void resize(int width, int height){
+		stage.getViewport().update(width, height, true);
+	}
 }
