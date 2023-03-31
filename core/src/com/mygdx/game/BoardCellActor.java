@@ -1,6 +1,5 @@
 package com.mygdx.game;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
@@ -18,7 +17,7 @@ public class BoardCellActor extends Actor {
     public BoardCellActor(AssetManager assetManager, Cell cell) {
         this.cell = cell;
         this.assetManager = assetManager;
-        texture = assetManager.get("water.png", Texture.class);
+        texture = assetManager.get("maingame/board/water.png", Texture.class);
         
         addListener(new ClickListener() {
             @Override public void clicked(InputEvent event, float x, float y) {
@@ -28,9 +27,9 @@ public class BoardCellActor extends Actor {
                 if(!cell.isHit()){
                     cell.setHit(true);
                     if(cell.getState() == "MISS"){
-                        BoardCellActor.this.assetManager.get("sound_miss.wav", Sound.class).play();
+                        BoardCellActor.this.assetManager.get("maingame/sound/sound_miss.wav", Sound.class).play();
                     }else if(cell.getState() == "HIT"){
-                        BoardCellActor.this.assetManager.get("sound_hit.wav", Sound.class).play();
+                        BoardCellActor.this.assetManager.get("maingame/sound/sound_hit.wav", Sound.class).play();
                     }
                 }
                 event.stop();
@@ -43,13 +42,13 @@ public class BoardCellActor extends Actor {
         
         switch(cell.getState()){
             case "AGUA":
-                texture = assetManager.get("water.png", Texture.class);
+                texture = assetManager.get("maingame/board/water.png", Texture.class);
                 break;
             case "HIT":
-                texture = assetManager.get("hit.png", Texture.class);
+                texture = assetManager.get("maingame/board/hit.png", Texture.class);
                 break;
             case "MISS":
-                texture = assetManager.get("miss.png", Texture.class);
+                texture = assetManager.get("maingame/board/miss.png", Texture.class);
                 break;
         }
 
