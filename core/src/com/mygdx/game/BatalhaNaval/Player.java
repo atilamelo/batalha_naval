@@ -1,5 +1,5 @@
 package com.mygdx.game.BatalhaNaval;
 
 public class Player {
-    public int qntdBombas;
+    public int qntdBombas = 0;
 }

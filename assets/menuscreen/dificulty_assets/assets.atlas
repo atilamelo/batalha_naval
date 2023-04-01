@@ -1,0 +1,92 @@
+
+assets.png
+size: 1024, 1024
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+upheavtt(7)
+  rotate: false
+  xy: 1, 858
+  size: 505, 54
+  orig: 505, 54
+  offset: 0, 0
+  index: -1
+upheavtt(9)
+  rotate: false
+  xy: 1, 914
+  size: 506, 107
+  orig: 506, 107
+  offset: 0, 0
+  index: -1
+dificil_check
+  rotate: false
+  xy: 509, 921
+  size: 256, 100
+  split: 90, 90, 12, 12
+  orig: 256, 100
+  offset: 0, 0
+  index: -1
+dificil_up
+  rotate: false
+  xy: 767, 921
+  size: 256, 100
+  split: 90, 90, 12, 12
+  orig: 256, 100
+  offset: 0, 0
+  index: -1
+facil_check
+  rotate: false
+  xy: 1, 756
+  size: 256, 100
+  split: 90, 90, 12, 12
+  orig: 256, 100
+  offset: 0, 0
+  index: -1
+facil_up
+  rotate: false
+  xy: 1, 654
+  size: 256, 100
+  split: 90, 90, 12, 12
+  orig: 256, 100
+  offset: 0, 0
+  index: -1
+medio_check
+  rotate: false
+  xy: 1, 552
+  size: 256, 100
+  split: 90, 90, 12, 12
+  orig: 256, 100
+  offset: 0, 0
+  index: -1
+medio_up
+  rotate: false
+  xy: 1, 450
+  size: 256, 100
+  split: 90, 90, 12, 12
+  orig: 256, 100
+  offset: 0, 0
+  index: -1
+button
+  rotate: false
+  xy: 1, 384
+  size: 64, 64
+  split: 14, 15, 20, 25
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+button_over
+  rotate: false
+  xy: 259, 726
+  size: 64, 64
+  split: 14, 15, 20, 25
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+button_pressed
+  rotate: false
+  xy: 259, 792
+  size: 64, 64
+  split: 14, 15, 20, 25
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
