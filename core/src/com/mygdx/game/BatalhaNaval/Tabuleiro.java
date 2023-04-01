@@ -52,10 +52,22 @@ public class Tabuleiro {
         return tabuleiro[x][y];
     }
 
+    /**
+     * 
+     * Retorna a largura do tabuleiro.
+     * 
+     * @return a largura do tabuleiro
+     */
     public int getLargura() {
         return largura;
     }
 
+    /**
+     * 
+     * Retorna a altura do tabuleiro.
+     * 
+     * @return a altura do tabuleiro
+     */
     public int getAltura() {
         return altura;
     }

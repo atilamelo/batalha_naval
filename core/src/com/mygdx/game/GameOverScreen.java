@@ -39,11 +39,11 @@ public class GameOverScreen extends ScreenAdapter {
         table_background = new Table();
         table_background.setFillParent(true);
         table_background.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        // if(logicGame.jogadorVenceu()){
+        if(logicGame.jogadorVenceu()){
             table_background.background(new TextureRegionDrawable(new TextureRegion(new Texture("gameoverscreen/win_background.png"))));
-        // }else{  
-        //     table_background.background(new TextureRegionDrawable(new TextureRegion(new Texture("gameoverscreen/lose_background.png"))));
-        // }
+        }else{  
+            table_background.background(new TextureRegionDrawable(new TextureRegion(new Texture("gameoverscreen/lose_background.png"))));
+        }
         stage.addActor(table_background);
 
 

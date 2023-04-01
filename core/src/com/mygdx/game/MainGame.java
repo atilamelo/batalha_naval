@@ -13,20 +13,29 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.Timer.Task;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.mygdx.game.Actors.CellActor;
+import com.mygdx.game.Actors.ShipActor;
 import com.mygdx.game.BatalhaNaval.LogicGame;
 import com.mygdx.game.BatalhaNaval.Ship;
 import com.mygdx.game.BatalhaNaval.Tabuleiro;
 
 public class MainGame extends ScreenAdapter {
+	private static final float TIMER_DELAY = 0.5f;
+    private static final float SOUND_DELAY = 1f;
+    private static final float SCREEN_DELAY = 3f;
+    private static final int VIEWPORT_WIDTH = 1200;
+    private static final int VIEWPORT_HEIGHT = 800;
+    private static final float BACKGROUND_MUSIC_VOLUME = 0.1f;
+
 	private Stage stage;
 	private Table table;
 	private LogicGame logicGame;
 	private Tabuleiro tabuleiro;
 	private AssetManager assetManager;
 	private Music backgroundMusic;
-	private Sound effectSoundFinal; 
+	private Sound effectSoundFinal;
 	private Dificuldade dificuldade;
-	private Timer timer; 
+	private Timer timer;
 	private BattleShipGame game;
 
 	public MainGame(BattleShipGame game, Dificuldade dificuldade) {
@@ -37,28 +46,9 @@ public class MainGame extends ScreenAdapter {
 	@Override
 	public void show() {
 		// Loads assets for the game
-		assetManager = new AssetManager();
-		assetManager.load("maingame/board/water.png", Texture.class);
-		assetManager.load("maingame/board/ship.png", Texture.class);
-		assetManager.load("maingame/board/miss.png", Texture.class);
-		assetManager.load("maingame/board/hit.png", Texture.class);
-		assetManager.load("maingame/navios/navio_2_explodido.png", Texture.class);
-		assetManager.load("maingame/navios/navio_2.png", Texture.class);
-		assetManager.load("maingame/navios/navio_3_explodido.png", Texture.class);
-		assetManager.load("maingame/navios/navio_3.png", Texture.class);
-		assetManager.load("maingame/navios/navio_4_explodido.png", Texture.class);
-		assetManager.load("maingame/navios/navio_4.png", Texture.class);
-		assetManager.load("maingame/navios/navio_5_explodido.png", Texture.class);
-		assetManager.load("maingame/navios/navio_5.png", Texture.class);
-		assetManager.load("maingame/sound/sound_miss.wav", Sound.class);
-		assetManager.load("maingame/sound/sound_hit.wav", Sound.class);
-		assetManager.load("maingame/sound/sound_win.wav", Sound.class);
-		assetManager.load("maingame/sound/sound_lose.wav", Sound.class);
-		assetManager.load("maingame/sound/sound_explosionship.wav", Sound.class);
-		assetManager.load("maingame/sound/backgroundsound.wav", Music.class);
-		assetManager.finishLoading();
+		assetManager = loadAssets();
 
-		timer = new Timer(); 
+		timer = new Timer();
 		Task task = new com.badlogic.gdx.utils.Timer.Task() {
 			@Override
 			public void run() {
@@ -73,14 +63,13 @@ public class MainGame extends ScreenAdapter {
 						Gdx.app.log("Status", "Jogador perdeu!");
 					}
 
-					Timer.schedule(new Task() {	
+					Timer.schedule(new Task() {
 						@Override
 						public void run() {
 							effectSoundFinal.play();
 						}
 					}, 1);
 
-					
 					Timer.schedule(new Task() {
 						@Override
 						public void run() {
@@ -90,7 +79,7 @@ public class MainGame extends ScreenAdapter {
 
 					this.cancel();
 
-				}		
+				}
 			}
 		};
 		timer.scheduleTask(task, 0f, 0.5f);
@@ -127,10 +116,10 @@ public class MainGame extends ScreenAdapter {
 		for (int row = 0; row < 10; row++) {
 			for (int col = 0; col < 10; col++) {
 				com.mygdx.game.BatalhaNaval.Cell cell = tabuleiro.getCell(row, col);
-				BoardCellActor cellTest = new BoardCellActor(assetManager, cell, logicGame);
+				CellActor cellTest = new CellActor(assetManager, cell, logicGame);
 				table.add(cellTest).size(64);
 			}
-			BoardShipActor shipActor = new BoardShipActor(assetManager, logicGame.getNavios().get(row));
+			ShipActor shipActor = new ShipActor(assetManager, logicGame.getNavios().get(row));
 			table.add(shipActor).height(48).width(256);
 			table.row();
 		}
@@ -143,6 +132,30 @@ public class MainGame extends ScreenAdapter {
 		stage.addActor(table); // add the table to the stage
 
 		Gdx.input.setInputProcessor(stage); // set the stage as the input processor
+	}
+
+	private AssetManager loadAssets() {
+		AssetManager assetManager = new AssetManager();
+		assetManager.load("maingame/board/water.png", Texture.class);
+		assetManager.load("maingame/board/miss.png", Texture.class);
+		assetManager.load("maingame/board/hit.png", Texture.class);
+		assetManager.load("maingame/navios/navio_2_explodido.png", Texture.class);
+		assetManager.load("maingame/navios/navio_2.png", Texture.class);
+		assetManager.load("maingame/navios/navio_3_explodido.png", Texture.class);
+		assetManager.load("maingame/navios/navio_3.png", Texture.class);
+		assetManager.load("maingame/navios/navio_4_explodido.png", Texture.class);
+		assetManager.load("maingame/navios/navio_4.png", Texture.class);
+		assetManager.load("maingame/navios/navio_5_explodido.png", Texture.class);
+		assetManager.load("maingame/navios/navio_5.png", Texture.class);
+		assetManager.load("maingame/sound/sound_miss.wav", Sound.class);
+		assetManager.load("maingame/sound/sound_hit.wav", Sound.class);
+		assetManager.load("maingame/sound/sound_win.wav", Sound.class);
+		assetManager.load("maingame/sound/sound_lose.wav", Sound.class);
+		assetManager.load("maingame/sound/sound_explosionship.wav", Sound.class);
+		assetManager.load("maingame/sound/backgroundsound.wav", Music.class);
+		assetManager.finishLoading();
+
+		return assetManager;
 	}
 
 	@Override

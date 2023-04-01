@@ -1,4 +1,4 @@
-package com.mygdx.game;
+package com.mygdx.game.Actors;
 
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
@@ -6,13 +6,13 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.mygdx.game.BatalhaNaval.Ship;
 
-public class BoardShipActor extends Actor {
+public class ShipActor extends Actor {
     private Texture texture;
     private Ship ship;
     private String filename; 
     private AssetManager assetManager;
 
-    public BoardShipActor(AssetManager assetManager, Ship ship) {
+    public ShipActor(AssetManager assetManager, Ship ship) {
         this.ship = ship;
         this.assetManager = assetManager;
         this.filename = "maingame/navios/navio_" + ship.getSize(); 

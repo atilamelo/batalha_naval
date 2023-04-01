@@ -3,6 +3,7 @@ package com.mygdx.game.BatalhaNaval;
  * Classe que representa uma célula no tabuleiro de jogo do tipo batalha naval.
  */
 public class Cell {
+    private CellState state; // estado da célula
     private boolean isHit; // indica se a célula já foi atingida
     private Ship ship; // ponteiro para o navio que ocupa a célula
     private int x, y; // Index da célula
@@ -15,9 +16,9 @@ public class Cell {
      */
     public Cell(int x, int y) {
         this.ship = null;
+        this.state = CellState.WATER; 
         this.x = x;
         this.y = y;
-        this.isHit = false;
     }
 
     /**
@@ -36,14 +37,8 @@ public class Cell {
      *         "HIT" - Caso a célula esteja ocupado por algum navio que foi atingido
      *         "MISS" - Caso a célula não esteja ocupada e foi atingida
      */
-    public String getState() {
-        if(ship != null && isHit){
-            return "HIT";
-        }else if(ship == null && isHit){
-            return "MISS";
-        }else{
-            return "WATER";
-        }
+    public CellState getState() {
+        return state;
     }
 
     /**
@@ -79,7 +74,11 @@ public class Cell {
      * @param hit true se a célula já foi atingida, false caso contrário
      */
     public void setHit(boolean hit) {
-        isHit = hit;
+        if(ship != null && hit){
+            state = CellState.HIT;
+        }else if(hit){
+            state = CellState.MISS;
+        }
     }
 
     /**
@@ -97,7 +96,7 @@ public class Cell {
      * @return true se a célula já foi atingida, false caso contrário
      */
     public boolean isHit() {
-        return isHit;
+        return state == CellState.HIT ? true : false;
     }
 
     /**
@@ -108,5 +107,5 @@ public class Cell {
     @Override
     public String toString() {
         return ship == null ? " " : Integer.toString(ship.getSize());
-    }
+    }    
 }

@@ -1,5 +1,17 @@
 package com.mygdx.game.BatalhaNaval;
 
 public class Player {
-    public int qntdBombas = 0;
+    private int qntdBombas;
+
+    public Player(int qntdBombas) {
+        this.qntdBombas = qntdBombas;
+    }
+
+    public int getQntdBombas() {
+        return qntdBombas;
+    }
+
+    public void atacar() {
+        qntdBombas--;
+    }
 }

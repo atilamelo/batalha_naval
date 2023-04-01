@@ -1,0 +1,83 @@
+
+MainGame.png
+size: 2048, 128
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+water
+  rotate: false
+  xy: 1100, 36
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+hit
+  rotate: false
+  xy: 1034, 36
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+miss
+  rotate: false
+  xy: 1166, 36
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+navio_2
+  rotate: false
+  xy: 2, 52
+  size: 256, 48
+  orig: 256, 48
+  offset: 0, 0
+  index: 4
+navio_3
+  rotate: false
+  xy: 260, 2
+  size: 256, 48
+  orig: 256, 48
+  offset: 0, 0
+  index: 3
+navio_4
+  rotate: false
+  xy: 518, 52
+  size: 256, 48
+  orig: 256, 48
+  offset: 0, 0
+  index: 5
+navio_5
+  rotate: false
+  xy: 776, 2
+  size: 256, 48
+  orig: 256, 48
+  offset: 0, 0
+  index: 2
+navio_2_explodido
+  rotate: false
+  xy: 518, 2
+  size: 256, 48
+  orig: 256, 48
+  offset: 0, 0
+  index: -1
+navio_3_explodido
+  rotate: false
+  xy: 776, 52
+  size: 256, 48
+  orig: 256, 48
+  offset: 0, 0
+  index: -1
+navio_4_explodido
+  rotate: false
+  xy: 2, 2
+  size: 256, 48
+  orig: 256, 48
+  offset: 0, 0
+  index: -1
+navio_5_explodido
+  rotate: false
+  xy: 260, 52
+  size: 256, 48
+  orig: 256, 48
+  offset: 0, 0
+  index: -1
