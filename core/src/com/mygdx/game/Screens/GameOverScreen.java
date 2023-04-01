@@ -1,4 +1,4 @@
-package com.mygdx.game;
+package com.mygdx.game.Screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
@@ -13,7 +13,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
-import com.mygdx.game.BatalhaNaval.LogicGame;
+import com.mygdx.game.BattleShipGame;
+import com.mygdx.game.Logic.LogicGame;
 
 public class GameOverScreen extends ScreenAdapter {
     private Stage stage;
@@ -55,7 +56,7 @@ public class GameOverScreen extends ScreenAdapter {
         restartButton.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y){
-                game.setScreen(new MenuDificuldade(game));
+                game.setScreen(new DificuldadeMenuScreen(game));
             }
         });
 
@@ -106,5 +107,6 @@ public class GameOverScreen extends ScreenAdapter {
     @Override
     public void hide() {
         Gdx.input.setInputProcessor(null);
+        dispose();
     }
 }

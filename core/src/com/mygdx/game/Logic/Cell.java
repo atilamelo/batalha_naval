@@ -1,10 +1,9 @@
-package com.mygdx.game.BatalhaNaval;
+package com.mygdx.game.Logic;
 /**
  * Classe que representa uma célula no tabuleiro de jogo do tipo batalha naval.
  */
 public class Cell {
     private CellState state; // estado da célula
-    private boolean isHit; // indica se a célula já foi atingida
     private Ship ship; // ponteiro para o navio que ocupa a célula
     private int x, y; // Index da célula
 

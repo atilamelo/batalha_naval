@@ -8,9 +8,9 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.mygdx.game.BatalhaNaval.Cell;
-import com.mygdx.game.BatalhaNaval.CellState;
-import com.mygdx.game.BatalhaNaval.LogicGame;
+import com.mygdx.game.Logic.Cell;
+import com.mygdx.game.Logic.CellState;
+import com.mygdx.game.Logic.LogicGame;
 
 public class CellActor extends Actor {
     private Texture texture;

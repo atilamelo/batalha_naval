@@ -4,7 +4,7 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.mygdx.game.BatalhaNaval.Ship;
+import com.mygdx.game.Logic.Ship;
 
 public class ShipActor extends Actor {
     private Texture texture;

@@ -1,4 +1,4 @@
-package com.mygdx.game.BatalhaNaval;
+package com.mygdx.game.Logic;
 
 public class Player {
     private int qntdBombas;

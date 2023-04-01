@@ -1,8 +1,6 @@
-package com.mygdx.game.BatalhaNaval;
+package com.mygdx.game.Logic;
 
 import java.util.List;
-
-import com.mygdx.game.Dificuldade;
 
 /**
  * Classe responsável por gerenciar a lógica do jogo Batalha Naval.
