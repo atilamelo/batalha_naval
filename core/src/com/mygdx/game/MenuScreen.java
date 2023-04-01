@@ -57,7 +57,6 @@ public class MenuScreen extends ScreenAdapter{
         table_menu.setPosition(0, Gdx.graphics.getHeight());
 
         skin = new Skin(Gdx.files.internal("menuscreen/uiskin/uiskin.json"));
-
         startButton = new ImageTextButton(" Iniciar ", skin);   
         startButton.addListener(new ClickListener(){
             @Override
@@ -66,6 +65,7 @@ public class MenuScreen extends ScreenAdapter{
             }
         });
         startButton.setTouchable(Touchable.enabled);
+
 
         quitButton = new ImageTextButton(" Sair ", skin);
         quitButton.addListener(new ClickListener(){

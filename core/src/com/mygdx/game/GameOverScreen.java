@@ -5,9 +5,12 @@ import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageTextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.mygdx.game.BatalhaNaval.LogicGame;
@@ -18,6 +21,8 @@ public class GameOverScreen extends ScreenAdapter {
     private BattleShipGame game;
     private Skin skin;
     private Table table_menu;
+    private ImageTextButton restartButton; 
+    private ImageTextButton exitButton;
     private LogicGame logicGame; 
 
     public GameOverScreen(BattleShipGame game, LogicGame logicGame) {
@@ -34,23 +39,43 @@ public class GameOverScreen extends ScreenAdapter {
         table_background = new Table();
         table_background.setFillParent(true);
         table_background.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        if(logicGame.jogadorVenceu()){
+        // if(logicGame.jogadorVenceu()){
             table_background.background(new TextureRegionDrawable(new TextureRegion(new Texture("gameoverscreen/win_background.png"))));
-        }else{  
-            table_background.background(new TextureRegionDrawable(new TextureRegion(new Texture("gameoverscreen/lose_background.png"))));
-        }
+        // }else{  
+        //     table_background.background(new TextureRegionDrawable(new TextureRegion(new Texture("gameoverscreen/lose_background.png"))));
+        // }
         stage.addActor(table_background);
 
 
+        table_menu = new Table(); 
 
+        skin = new Skin(Gdx.files.internal("menuscreen/dificulty_assets/assets.json"));        
+        restartButton = new ImageTextButton("Jogar Novamente", skin);
+        
+        restartButton.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y){
+                game.setScreen(new MenuDificuldade(game));
+            }
+        });
 
-        // table_menu.pack();
+        exitButton = new ImageTextButton("Sair", skin, "default");
 
-        // table_menu.setPosition( 
-        //     (stage.getWidth() - table_menu.getWidth()) / 2f,
-        //     (stage.getHeight() - table_menu.getHeight())
-        // ); 
-        // stage.addActor(table_menu);
+        exitButton.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y){
+                Gdx.app.exit();
+            }
+        });
+
+        table_menu.add(restartButton).width(200).height(75);
+        table_menu.add(exitButton).width(200).height(75);
+        table_menu.pack();
+        table_menu.setPosition( 
+            (stage.getWidth() - table_menu.getWidth()) / 2f,
+            (stage.getHeight() - table_menu.getHeight()) / 8f
+        ); 
+        stage.addActor(table_menu);
 
         Gdx.input.setInputProcessor(stage); // set the stage as the input processor
     }

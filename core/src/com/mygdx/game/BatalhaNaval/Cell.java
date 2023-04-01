@@ -1,6 +1,4 @@
 package com.mygdx.game.BatalhaNaval;
-
-
 /**
  * Classe que representa uma célula no tabuleiro de jogo do tipo batalha naval.
  */
