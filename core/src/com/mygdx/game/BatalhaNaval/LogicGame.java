@@ -24,5 +24,9 @@ public class LogicGame {
     public Tabuleiro getTabuleiro(){
         return tabuleiro; 
     }
+
+    public List<Ship> getNavios() {
+        return navios;
+    }
     
 }

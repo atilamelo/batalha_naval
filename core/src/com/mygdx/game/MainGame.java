@@ -36,6 +36,15 @@ public class MainGame extends ScreenAdapter{
 		assetManager.load("maingame/board/hit.png", Texture.class);
 		assetManager.load("maingame/sound/sound_miss.wav", Sound.class);
 		assetManager.load("maingame/sound/sound_hit.wav", Sound.class);
+		assetManager.load("maingame/navios/navio_2_explodido.png", Texture.class);
+		assetManager.load("maingame/navios/navio_2.png", Texture.class);
+		assetManager.load("maingame/navios/navio_3_explodido.png", Texture.class);
+		assetManager.load("maingame/navios/navio_3.png", Texture.class);
+		assetManager.load("maingame/navios/navio_4_explodido.png", Texture.class);
+		assetManager.load("maingame/navios/navio_4.png", Texture.class);
+		assetManager.load("maingame/navios/navio_5_explodido.png", Texture.class);
+		assetManager.load("maingame/navios/navio_5.png", Texture.class);
+		
 		assetManager.finishLoading();
 
 		// Create game logic 
@@ -57,14 +66,17 @@ public class MainGame extends ScreenAdapter{
 		stage = new Stage(new FitViewport(1200, 800));
 
 		table = new Table();
-		table.defaults().size(64).pad(5); // set the default size and padding of each cell
+		table.defaults().pad(5); // set the default size and padding of each cell
+		// table.debug();
 
 		for (int row = 0; row < 10; row++) {
 			for (int col = 0; col < 10; col++) {
 				com.mygdx.game.BatalhaNaval.Cell cell = tabuleiro.getCell(row, col);
 				BoardCellActor cellTest = new BoardCellActor(assetManager, cell);
-				table.add(cellTest); 
+				table.add(cellTest).size(64); 
 			}
+			BoardShipActor shipActor = new BoardShipActor(assetManager, logicGame.getNavios().get(row));
+			table.add(shipActor).height(48).width(256);
 			table.row();
 		}
 

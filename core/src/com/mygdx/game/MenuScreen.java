@@ -8,11 +8,14 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.badlogic.gdx.scenes.scene2d.ui.Container;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageTextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 
 
@@ -22,7 +25,7 @@ public class MenuScreen extends ScreenAdapter{
     private AssetManager assetManager;
     private BattleShipGame game;
     private ImageTextButton startButton; 
-    // private ImageTextButton quitButton; 
+    private ImageTextButton quitButton; 
     private Skin skin; 
     private Table table_menu;
 
@@ -34,7 +37,7 @@ public class MenuScreen extends ScreenAdapter{
     public void show() {
         // Loads assets for the game
         assetManager = new AssetManager();
-        assetManager.load("menuscreen/background_menu.png", Texture.class);
+        assetManager.load("menuscreen/background_menu.jpg", Texture.class);
         assetManager.finishLoading();
 
         /* Create UI */
@@ -43,25 +46,41 @@ public class MenuScreen extends ScreenAdapter{
         // Fill background 
         table_background = new Table();
         table_background.setFillParent(true);
-        table_background.background(new TextureRegionDrawable(new TextureRegion(assetManager.get("menuscreen/background_menu.png", Texture.class))));
+        table_background.background(new TextureRegionDrawable(new TextureRegion(assetManager.get("menuscreen/background_menu.jpg", Texture.class))));
         stage.addActor(table_background);
 
-
         /* Create menu buttons */
+        table_menu = new Table();
+        table_menu.debug();
+        table_menu.setWidth(stage.getWidth());
+        table_menu.align(Align.center | Align.top);
+
+        table_menu.setPosition(0, Gdx.graphics.getHeight());
+
         skin = new Skin(Gdx.files.internal("menuscreen/uiskin/uiskin.json"));
-        startButton = new ImageTextButton(" Iniciar ", skin);
+
+        startButton = new ImageTextButton(" Iniciar ", skin);   
         startButton.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y){
                 game.setScreen(new MainGame(game));
             }
         });
+        startButton.setTouchable(Touchable.enabled);
 
-        startButton.setSize(300, 200);
-        table_menu = new Table();
-        table_menu.debug();
+        quitButton = new ImageTextButton(" Sair ", skin);
+        quitButton.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y){
+                Gdx.app.exit();
+            }
+        });
+        quitButton.setTouchable(Touchable.enabled);
+
         table_menu.padTop(100);
-        table_menu.add(startButton);
+        table_menu.add(startButton).width(200).height(100);
+        table_menu.row();
+        table_menu.add(quitButton).expand().fill();
         table_menu.pack();
 
         table_menu.setPosition(

@@ -59,7 +59,7 @@ public class Tabuleiro {
     public int getAltura() {
         return altura;
     }
-
+    
     /**
      * 
      * Retorna uma lista com todas as células vizinhas à célula passada como

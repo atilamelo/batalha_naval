@@ -6,7 +6,7 @@ package com.mygdx.game.BatalhaNaval;
  */
 public class Cell {
     private boolean isHit; // indica se a célula já foi atingida
-    private Ship ship = null; // ponteiro para o navio que ocupa a célula
+    private Ship ship; // ponteiro para o navio que ocupa a célula
     private int x, y; // Index da célula
 
     /**
@@ -16,6 +16,7 @@ public class Cell {
      * @param y a posição y da célula no tabuleiro
      */
     public Cell(int x, int y) {
+        this.ship = null;
         this.x = x;
         this.y = y;
         this.isHit = false;
