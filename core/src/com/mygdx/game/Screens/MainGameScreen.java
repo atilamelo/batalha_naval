@@ -91,6 +91,7 @@ public class MainGameScreen extends ScreenAdapter {
 		assetManager.load("maingame/navios/navio_4.png", Texture.class);
 		assetManager.load("maingame/navios/navio_5_explodido.png", Texture.class);
 		assetManager.load("maingame/navios/navio_5.png", Texture.class);
+		assetManager.load("maingame/board/water_hover.png", Texture.class);
 
 		/* Sons e músicas */
 		assetManager.load("maingame/sound/sound_miss.wav", Sound.class);
@@ -136,6 +137,7 @@ public class MainGameScreen extends ScreenAdapter {
 
 		table = new Table();
 		table.defaults().pad(PAD_BETWEEN_CELLS);
+		// table.debug();
 
 		/* Tabuleiro é desenhado aqui, junto com os navios */
 		for (int row = 0; row < 10; row++) {

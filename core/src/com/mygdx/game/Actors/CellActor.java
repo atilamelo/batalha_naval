@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.game.Logic.Cell;
 import com.mygdx.game.Logic.CellState;
@@ -60,6 +61,17 @@ public class CellActor extends Actor {
             }
         });
 
+        addListener(new InputListener(){
+            @Override
+            public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor) {
+                texture = CellActor.this.assetManager.get("maingame/board/water_hover.png", Texture.class);
+            }
+            @Override 
+            public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
+                texture = CellActor.this.assetManager.get("maingame/board/water.png", Texture.class);
+            }
+        });
+
     }
 
     @Override
@@ -67,7 +79,6 @@ public class CellActor extends Actor {
 
         switch (cell.getState()) {
             case WATER:
-                texture = assetManager.get("maingame/board/water.png", Texture.class);
                 break;
             case HIT:
                 texture = assetManager.get("maingame/board/hit.png", Texture.class);
