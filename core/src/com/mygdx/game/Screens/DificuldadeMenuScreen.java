@@ -134,7 +134,11 @@ public class DificuldadeMenuScreen extends ScreenAdapter {
         stage.getViewport().update(width, height, true);
         stage.getViewport().apply(true); // apply the viewport changes
         stage.getCamera().position.set(stage.getWidth() / 2, stage.getHeight() / 2, 0); // center the camera on the
-                                                                                        // stage
+        
+        table_menu.setPosition( 
+            (stage.getWidth() - table_menu.getWidth()) / 2f,
+            (stage.getHeight() - table_menu.getHeight())
+        ); 
 
     }
 

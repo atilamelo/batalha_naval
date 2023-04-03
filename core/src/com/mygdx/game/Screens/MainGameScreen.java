@@ -6,10 +6,14 @@ import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.Timer.Task;
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -30,6 +34,7 @@ public class MainGameScreen extends ScreenAdapter {
 	private static final int VIEWPORT_HEIGHT = 800;
 	private static final int PAD_BETWEEN_CELLS = 5;
 	private static final float BACKGROUND_MUSIC_VOLUME = 0.3f;
+	private static final String BOMBAS_MSG = "Quantidade de bombas: "; 
 
 	/* Parte lógica do jogo */
 	private LogicGame logicGame;
@@ -44,6 +49,7 @@ public class MainGameScreen extends ScreenAdapter {
 	private Music backgroundMusic;
 	private Sound effectSoundFinal;
 	private Timer timer;
+	private Label labelQntdBombas; 
 
 	/**
 	 * Construtor da classe MainGame.
@@ -143,6 +149,11 @@ public class MainGameScreen extends ScreenAdapter {
 			table.row();
 		}
 
+		LabelStyle labelStyle = new LabelStyle (new BitmapFont(), Color.BLACK);
+		labelStyle.font.getData().setScale(2.0f);
+		labelQntdBombas = new Label(BOMBAS_MSG, labelStyle);
+		table.add(labelQntdBombas).colspan(10).expand();
+
 		// Ajusta o tamanho da table para caber todos os seus elementos
 		table.pack();
 
@@ -205,6 +216,8 @@ public class MainGameScreen extends ScreenAdapter {
 
 	@Override
 	public void render(float delta) {
+		labelQntdBombas.setText(BOMBAS_MSG + logicGame.getQntdBombas()); // Atualiza a quantidade de bombas
+
 		Gdx.gl.glClearColor(255, 255, 255, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		stage.draw();
