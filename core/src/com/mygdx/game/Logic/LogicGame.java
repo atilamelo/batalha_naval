@@ -9,6 +9,7 @@ public class LogicGame {
     private Tabuleiro tabuleiro; // Tabuleiro do jogo
     private List<Ship> navios; // Lista de navios no jogo
     private Player jogador; // Jogador
+    private Dificuldade dificuldade; // Dificuldade do jogo
 
     /**
      * Construtor da classe LogicGame.
@@ -25,6 +26,7 @@ public class LogicGame {
         this.tabuleiro = new Tabuleiro(larguraTabuleiro, alturaTabuleiro, navios);
         this.navios = navios;
 
+        this.dificuldade = dificuldade; 
         // Configura a quantidade de bombas disponíveis do jogador de acordo com a
         // dificuldade escolhida
         switch (dificuldade) {
@@ -68,6 +70,15 @@ public class LogicGame {
      */
     public int getQntdBombas() {
         return jogador.getQntdBombas();
+    }
+
+    /**
+     * Retorna a dificuldade do jogo 
+     * 
+     * @return Enum Dificuldade
+     */
+    public Dificuldade getDificuldade(){
+        return dificuldade;
     }
 
     /**

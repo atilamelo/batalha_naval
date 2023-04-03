@@ -133,6 +133,7 @@ public class MainGameScreen extends ScreenAdapter {
 	 */
 	private void createUI() {
 		stage = new Stage(new FitViewport(VIEWPORT_WIDTH, VIEWPORT_HEIGHT));
+		backgroundMusic.setLooping(true);
 		backgroundMusic.play();
 
 		table = new Table();
@@ -218,7 +219,11 @@ public class MainGameScreen extends ScreenAdapter {
 
 	@Override
 	public void render(float delta) {
-		labelQntdBombas.setText(BOMBAS_MSG + logicGame.getQntdBombas()); // Atualiza a quantidade de bombas
+		if(logicGame.getDificuldade() == Dificuldade.FACIL){
+			labelQntdBombas.setText(BOMBAS_MSG + "Infinito"); // Atualiza a quantidade de bombas
+		}else{
+			labelQntdBombas.setText(BOMBAS_MSG + logicGame.getQntdBombas()); // Atualiza a quantidade de bombas
+		}
 
 		Gdx.gl.glClearColor(255, 255, 255, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
