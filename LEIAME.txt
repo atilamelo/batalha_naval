@@ -1,0 +1,19 @@
+INSTRUÇÕES PARA COMPILAR O BATALHA NAVAL 
+
+Certifique-se de ter o Java 11.0.18 e o Gradle 8.0.2 instalados em sua máquina, a versão
+utilizada de LibGdx é a 1.10. O jogo poderá rodar em outras versões, todavia, as versões
+que testamos oficialmente são o conjunto dessas duas.
+
+1. Abra o terminal ou prompt de comando e navegue até o diretório raiz do projeto (o que contém esse arquivo).
+
+2. No terminal ou prompt de comando, execute o seguinte comando: 
+-> gradle desktop:dist
+
+3. Isso compilará seu projeto e criará um arquivo .jar na pasta "desktop/build/libs".
+
+4. Navegue até a pasta "desktop/build/libs" e execute o seguinte comando: 
+-> java -jar <nome-do-arquivo-gerado>.jar
+
+Isso iniciará o DesktopLauncher e executará seu jogo.
+
+Qualquer dúvidas, contate atilamelodesouza@gmail.com
